@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(ZMath LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+
+set(OUTPUT_DIR ${PROJECT_BINARY_DIR}/../bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OUTPUT_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OUTPUT_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIR})
+
+add_definitions(/D ZMATH_EXPORTS)
+
+set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/../include/zmath)
+include_directories(${INCLUDE_DIR})
+
+file(GLOB INCLUDE_FILES ${PROJECT_SOURCE_DIR}/../include/zmath/*)
+file(GLOB SOURCE_FILES ${PROJECT_SOURCE_DIR}/*.h ${PROJECT_SOURCE_DIR}/*.cpp)
+
+source_group(Public FILES ${INCLUDE_FILES})
+source_group(Private FILES ${SOURCE_FILES})
+source_group("" FILES
+    ${PROJECT_SOURCE_DIR}/CMakeLists.txt
+)
+
+add_library(ZMath SHARED ${INCLUDE_FILES} ${SOURCE_FILES} ${PROJECT_SOURCE_DIR}/CMakeLists.txt)
