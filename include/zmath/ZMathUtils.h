@@ -1,17 +1,15 @@
 #pragma once
 
-#include "ZMathExports.h"
-
 #include "ZMathConsts.h"
 
 
 namespace zmath
 {
-    struct ZMATH_API ZMathUtils
+    struct ZMathUtils
     {
         static bool LessThan(double left, double right, double tol = ZMathConsts::TOL_DOUBLE)
         {
-            return false;
+            return left < (right - tol);
         }
 
         static bool GreaterThan(double left, double right, double tol = ZMathConsts::TOL_DOUBLE)

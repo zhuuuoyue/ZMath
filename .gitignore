@@ -1,2 +1,7 @@
 bin/
 build/
+ZMathTest/.vs/
+ZMathTest/x64/
+ZMathTest/x86/
+ZMathTest/ZMathTest/
+ZMathTest/packages/
