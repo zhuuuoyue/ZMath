@@ -1,7 +1,5 @@
 #pragma once
 
-#include "ZMathExports.h"
-
 #include <cmath>
 #include <cassert>
 
@@ -12,7 +10,7 @@
 
 namespace zmath
 {
-    struct ZMATH_API Vector2dUtils
+    struct Vector2dUtils
     {
         static double Length(const Vector2d& vec)
         {

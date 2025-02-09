@@ -5,6 +5,8 @@
 #include <xutility>
 #include <cassert>
 
+#include "ZMathUtils.h"
+
 
 namespace zmath
 {
