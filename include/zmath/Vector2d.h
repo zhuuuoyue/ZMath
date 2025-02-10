@@ -3,9 +3,6 @@
 #include "ZMathExports.h"
 
 #include <xutility>
-#include <cassert>
-
-#include "ZMathUtils.h"
 
 
 namespace zmath
@@ -64,13 +61,11 @@ namespace zmath
 
         double operator[](std::size_t index) const
         {
-            assert(index < DIMENSIONS);
             return m_xy[index];
         }
 
         double& operator[](std::size_t index)
         {
-            assert(index < DIMENSIONS);
             return m_xy[index];
         }
 
@@ -124,7 +119,6 @@ namespace zmath
 
         Vector2d operator/(double k) const
         {
-            assert(!ZMathUtils::IsZero(k));
             return Vector2d{ X() / k, Y() / k };
         }
 
@@ -140,8 +134,7 @@ namespace zmath
         enum Index
         {
             X_INDEX = 0,
-            Y_INDEX = 1,
-            DIMENSIONS = 2
+            Y_INDEX = 1
         };
 
         double m_xy[2]{ 0, 0 };

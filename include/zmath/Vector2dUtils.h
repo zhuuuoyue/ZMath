@@ -23,6 +23,18 @@ namespace zmath
             return ZMathUtils::IsZero(len, tol);
         }
 
+        static bool EqualTo(const Vector2d& left, const Vector2d& right, double tol = ZMathConsts::TOL_DOUBLE)
+        {
+            return ZMathUtils::EqualTo(left.X(), right.X(), tol)
+                && ZMathUtils::EqualTo(left.Y(), right.Y(), tol);
+        }
+
+        static bool NotEqualTo(const Vector2d& left, const Vector2d& right, double tol = ZMathConsts::TOL_DOUBLE)
+        {
+            return !ZMathUtils::EqualTo(left.X(), right.X(), tol)
+                || !ZMathUtils::EqualTo(left.Y(), right.Y(), tol);
+        }
+
         static bool IsUnit(const Vector2d& vec, double tol = ZMathConsts::TOL_DOUBLE)
         {
             double len = Length(vec);
@@ -44,6 +56,36 @@ namespace zmath
         static double CrossProduct(const Vector2d& v1, const Vector2d& v2)
         {
             return v1.X() * v2.Y() - v1.Y() * v2.X();
+        }
+    };
+
+    struct Vector2dEqualToPredictor
+    {
+        double tolerance{ ZMathConsts::TOL_DOUBLE };
+
+        explicit Vector2dEqualToPredictor(double tol = ZMathConsts::TOL_DOUBLE)
+            : tolerance{ tol }
+        {
+        }
+
+        bool operator()(const Vector2d& v1, const Vector2d& v2) const
+        {
+            return Vector2dUtils::EqualTo(v1, v2);
+        }
+    };
+
+    struct Vector2dNotEqualToPredictor
+    {
+        double tolerance{ ZMathConsts::TOL_DOUBLE };
+
+        explicit Vector2dNotEqualToPredictor(double tol = ZMathConsts::TOL_DOUBLE)
+            : tolerance{ tol }
+        {
+        }
+
+        bool operator()(const Vector2d& v1, const Vector2d& v2) const
+        {
+            return Vector2dUtils::NotEqualTo(v1, v2);
         }
     };
 }
