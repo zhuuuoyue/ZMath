@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.10)
+
+set(PROJECT_DIR ZMath)
+set(REPOS_DIR ${PROJECT_SOURCE_DIR}/..)
+
+project(${PROJECT_DIR})
+set(CMAKE_CXX_STANDARD 17)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${REPOS_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${REPOS_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${REPOS_DIR}/bin)
+
+add_definitions(/D ZMATH_EXPORTS)
+
+set(INCLUDE_DIR ${REPOS_DIR}/include/zmath)
+include_directories(${INCLUDE_DIR})
+
+file(GLOB INCLUDE_FILES ${INCLUDE_DIR}/*)
+file(GLOB SOURCE_FILES ${PROJECT_SOURCE_DIR}/*.h ${PROJECT_SOURCE_DIR}/*.cpp)
+
+source_group(Public FILES ${INCLUDE_FILES})
+source_group(Private FILES ${SOURCE_FILES})
+source_group("" FILES ${PROJECT_SOURCE_DIR}/CMakeLists.txt)
+
+add_library(${PROJECT_DIR} SHARED ${INCLUDE_FILES} ${SOURCE_FILES} ${PROJECT_SOURCE_DIR}/CMakeLists.txt)

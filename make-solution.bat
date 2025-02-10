@@ -8,3 +8,4 @@ if not exist %build_dir% (
 )
 cd %build_dir%
 cmake %source_dir%
+cd %cd%

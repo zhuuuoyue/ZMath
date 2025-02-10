@@ -1,4 +1,3 @@
-
+@echo off
 set cd=%~dp0
-MSBuild.exe %cd%build/ZMath.sln /p:Configuration=RelWithDebInfo
-pause
+MSBuild.exe %cd%build/zmath/ZMath.sln /p:Configuration=RelWithDebInfo
